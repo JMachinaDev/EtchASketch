@@ -1,11 +1,13 @@
 function createCanvas(){
-    const ammountGrid = prompt("Enter height of grid, limit is 64","16");
-    for(let i = 0; i <= 4096; i++){
+    // const ammountGrid = prompt("Enter height of grid, limit is 64","16");
+    for(let i = 0; i <= 440; i++){
         const container = document.querySelector('#container');
         const content = document.createElement('div');
         container.style.display = 'grid';
-        container.style.gridTemplateRows = `repeat(${ammountGrid}, 1fr)`;
-        container.style.gridTemplateColumns = `repeat(${ammountGrid}, 1fr)`;
+        // container.style.gridTemplateRows = `repeat(${ammountGrid}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(21, 1fr)`;
+
+        container.style.gridTemplateColumns = `repeat(21, 1fr)`;
 
         content.classList.add('content');
         container.appendChild(content);
@@ -15,21 +17,42 @@ button.forEach(button => button.addEventListener('click', colorPicker));
 };
 
 
-function colorPicker(e){
+// let pen = [];
+// pen[0] = {
+//     x: 9 * box,
+//     y: 10 * box
+// }
+
+
+function colorPicker (e) {
     const color = e.target.id;
-    if(color === 'black'){
+    // console.log(color);
+    if(color == 'black'){
         const draw = document.querySelectorAll('.content');
-        draw.forEach(draw => draw.addEventListener('mouseover', function(){
-            draw.style.backgroundColor = "black";
-        }));
+        console.log(draw[220])
+        draw[220].style.backgroundColor = 'black'
+        draw.forEach(draw => draw.addEventListener('onkeyup', (e){
+            
+        }))
+    }
+    
+
+}
+// function colorPicker(e){
+//     const color = e.target.id;
+//     if(color === 'black'){
+//         const draw = document.querySelectorAll('.content');
+//         draw.forEach(draw => draw.addEventListener('mouseover', function(){
+//             draw.style.backgroundColor = "black";
+//         }));
         
-    }else if(color === 'rainbow'){
-        const draw = document.querySelectorAll('.content');
-        draw.forEach(draw => draw.addEventListener('mouseover', function(){
-            draw.style.backgroundColor = `hsl(${Math.floor(Math.random() * 360)}, 100%, 45%)`;
-        }));
-    };
-};
+//     }else if(color === 'rainbow'){
+//         const draw = document.querySelectorAll('.content');
+//         draw.forEach(draw => draw.addEventListener('mouseover', function(){
+//             draw.style.backgroundColor = `hsl(${Math.floor(Math.random() * 360)}, 100%, 45%)`;
+//         }));
+//     };
+// };
 
 
 function resetEtch(){
@@ -46,4 +69,3 @@ const rainbowHover = document.getElementById('rainbow').addEventListener('mousem
 function rainbowEffect(e){
     document.getElementById('rainbow').style.backgroundColor = "rgb("+e.offsetX * 5+","+e.offsetY * 5+", 0)";
 };
-
